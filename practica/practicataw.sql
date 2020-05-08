@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-05-2020 a las 06:55:12
+-- Tiempo de generación: 08-05-2020 a las 09:05:59
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.5
 
@@ -38,7 +38,8 @@ CREATE TABLE `categorias` (
 
 INSERT INTO `categorias` (`idCategoria`, `nombre`) VALUES
 (1, 'Ropa'),
-(2, 'Electronica');
+(2, 'Electronica'),
+(3, 'Muebles');
 
 -- --------------------------------------------------------
 
@@ -57,7 +58,8 @@ CREATE TABLE `catfabricantes` (
 
 INSERT INTO `catfabricantes` (`idCatFabricante`, `nombre`) VALUES
 (1, 'Ropa'),
-(2, 'Electronica');
+(2, 'Electronica'),
+(3, 'Muebles');
 
 -- --------------------------------------------------------
 
@@ -80,7 +82,9 @@ CREATE TABLE `fabricantes` (
 
 INSERT INTO `fabricantes` (`idFabricante`, `nombre`, `direccion`, `correo`, `telefono`, `fkcatfabricante`) VALUES
 (1, 'Nike', 'direccion x', 'correox@gmail.com', '8342738293', 1),
-(2, 'Sony', 'direccion y', 'correoy@gmail.com', '8341567283', 2);
+(3, 'Adidas', 'Direccion a', 'adidas@gmail.com', '8349238293', 1),
+(5, 'Sony', 'direccion s', 'sony@gmail.com', '8346218293', 2),
+(6, 'Ikea', 'direccion i', 'ikea@gmail.com', '8342839202', 3);
 
 -- --------------------------------------------------------
 
@@ -105,8 +109,9 @@ CREATE TABLE `productos` (
 
 INSERT INTO `productos` (`idProducto`, `nombre`, `descripcion`, `precioVenta`, `precioCompra`, `color`, `fkCategoria`, `fkFabricante`) VALUES
 (1, 'Tenis', 'Tenis Quake 2', 1119, 1590, 'azul', 1, 1),
-(2, 'PlayStation 4', 'Consola de videojuegos PlayStation 4', 7400, 6901, 'negro', 2, 2),
-(3, 'Tenis Max Bella 2', 'Tenis Nike Max Bella 2', 1699, 1280, 'blanco/rosa', 1, 1);
+(7, 'PS4', 'Consola ps4', 5123, 4432, 'negro', 2, 5),
+(8, 'Tenis Max Bella 2', 'Tenis Nike Max Bella 2', 1699, 1280, 'negro', 1, 1),
+(9, 'Mueble loki', 'Mueble de madera ', 2132, 1892, 'cafe', 3, 6);
 
 --
 -- Índices para tablas volcadas
@@ -147,25 +152,25 @@ ALTER TABLE `productos`
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `idCategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idCategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `catfabricantes`
 --
 ALTER TABLE `catfabricantes`
-  MODIFY `idCatFabricante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idCatFabricante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `fabricantes`
 --
 ALTER TABLE `fabricantes`
-  MODIFY `idFabricante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idFabricante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `idProducto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idProducto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Restricciones para tablas volcadas
