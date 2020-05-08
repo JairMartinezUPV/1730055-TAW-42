@@ -44,6 +44,7 @@ include_once "conn.php";
             </tr>
           </thead>
 
+          <!--Se hace el ciclo con el cual se llena la base de datos-->
           <tbody>
             <?php foreach ($conn->query('SELECT p.idProducto AS id, p.nombre AS nombre, p.descripcion AS descripcion, p.precioVenta AS preciov, p.precioCompra AS precioc, p.color AS color, c.nombre AS pcategoria, f.nombre AS fnombre FROM productos p INNER JOIN categorias c ON p.fkCategoria = c.idCategoria INNER JOIN fabricantes f ON p.fkFabricante = f.idFabricante') as $row){ ?>
               <tr>
@@ -57,6 +58,7 @@ include_once "conn.php";
                 <td><?php echo $row['fnombre'] ?></td>
                 <td>
                   <div class="row justify-content-center">
+                    <!--Boton para editar el producto-->
                     <div class="col-6 justify-content-center">
                       <span>
                         <form action="modificarProducto.php" method="POST">
@@ -65,6 +67,7 @@ include_once "conn.php";
                         </form>
                       </span>
                     </div>
+                    <!--Boton para eliminar el producto-->
                     <div class="col-6 justify-content-center">
                       <span>
                         <form action="borrarProducto.php" method="POST">

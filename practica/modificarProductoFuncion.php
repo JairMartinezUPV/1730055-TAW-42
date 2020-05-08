@@ -1,4 +1,5 @@
 <?php 
+	// se incluye la conexion y se llaman a las variables mediante el metodo POST
 	include "conn.php";
 	$id=$_POST["id"];
 	$nombre=$_POST["nombre"];
@@ -9,6 +10,7 @@
 	$categoria=$_POST["categoria"];
 	$fabricante=$_POST["fabricante"];
 
+	//consulta con la cual se actualizara el producto
 	$sql="UPDATE productos SET nombre='$nombre', descripcion='$descripcion', precioVenta='$precioventa', precioCompra='$preciocompra', color='$color', fkCategoria=$categoria, fkFabricante=$fabricante WHERE idProducto=$id";
 	
 	if (mysqli_query($conn,$sql)) {

@@ -1,4 +1,5 @@
 <?php
+// se manda a llamar la conexion
 include_once "conn.php";
 ?>
 
@@ -52,6 +53,7 @@ include_once "conn.php";
         <div class="row my-2 py-2">
             <div class="col">
               <div class="form-group"> 
+                <!--Tomamos los datos que esten en la tabla de categorias para este select-->
                 <label for="exampleFormControlSelect1">Categoria:</label>
                 <select class="form-control" name="categoria">
                 <?php $query = $mysqli -> query ("SELECT idCategoria, nombre FROM categorias");
@@ -65,6 +67,7 @@ include_once "conn.php";
             </div>
             <div class="col">
               <div class="form-group">
+                <!--Tomamos los datos que esten en la tabla de fabricantes para este select-->
                 <label for="exampleFormControlSelect1">Fabricante:</label>
                 <select class="form-control" name="fabricante">
                   <?php $query = $mysqli -> query ("SELECT idFabricante, nombre FROM fabricantes");

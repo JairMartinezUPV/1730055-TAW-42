@@ -1,4 +1,5 @@
 <?php
+	//se manda a llamar la conexion y el id del producto que vamos a eliminar
 	include "conn.php";
 	$id=$_POST["id"];
 	$sql="DELETE FROM productos WHERE idProducto=$id";

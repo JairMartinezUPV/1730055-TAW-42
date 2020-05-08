@@ -1,6 +1,8 @@
 <?php
+  //Se incluye la conexion asi como se manda a llamar la vairable que tomamos de la tabla de producto la cual es el id
   include_once "conn.php";
   $idProducto=$_POST["id"];
+  //consulta con la cual le decimos a la pagina que producto vamos a editar
   $sql="SELECT p.idProducto AS id, p.nombre AS nombre, p.descripcion AS descripcion, p.precioVenta AS preciov, p.precioCompra AS precioc, p.color AS color, c.nombre AS pcategoria, f.nombre AS fnombre, c.idCategoria AS idCat, f.idFabricante AS idFab FROM productos p INNER JOIN categorias c ON p.fkCategoria = c.idCategoria INNER JOIN fabricantes f ON p.fkFabricante = f.idFabricante WHERE idProducto=$idProducto";
   $datos=mysqli_query($conn,$sql);
   $reg=mysqli_fetch_array($datos);
@@ -21,6 +23,7 @@
   <div class="container">
     <form action="modificarProductoFuncion.php" method="POST">
       <!-- Default input -->
+      <!--Se colocan en los inputs la informacion que se habia registradi para el producto-->
       <div class="form-group">
         <!-- Grid row -->
         <div class="row my-2 py-2">
