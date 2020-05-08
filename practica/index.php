@@ -21,10 +21,10 @@ include_once "conn.php";
     <div class="row d-flex justify-content-center">
       <div class="row r1">
         <div class="col-md-9 col1">
-          <h1>Registro de Usuarios</h1>
+          <h1>Productos</h1>
         </div>
         <div class="col-md-3 col2 my-2">
-          <a class="btn btn-md btn-block b4" href="agregarUsuario.php">AGREGAR USUARIO</a>
+          <a class="btn btn-md btn-block b4" href="agregarProducto.php">Agregar Producto</a>
         </div>
       </div>
       <div class="container-fluid" >
@@ -82,10 +82,6 @@ include_once "conn.php";
         </table>
       </div>
     </div>
-  </div>
-
-  <div class="container d-flex justify-content-center my-5">
-    <a class="btn btn-lg b5" href="administrador.php">Regresar</a>
   </div>
 
   <!-- SCRIPTS NO MOVERLE-->
