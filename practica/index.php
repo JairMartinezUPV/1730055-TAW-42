@@ -32,7 +32,8 @@ include_once "conn.php";
 
           <thead class="bg-primary table1">
             <tr>
-              <th scope="col">Nombres</th>
+            <th scope="col">id</th>
+              <th scope="col">Nombre</th>
               <th scope="col">Descripcion</th>
               <th scope="col">Precio Venta</th>
               <th scope="col">Precio Compra</th>
@@ -46,6 +47,7 @@ include_once "conn.php";
           <tbody>
             <?php foreach ($conn->query('SELECT p.idProducto AS id, p.nombre AS nombre, p.descripcion AS descripcion, p.precioVenta AS preciov, p.precioCompra AS precioc, p.color AS color, c.nombre AS pcategoria, f.nombre AS fnombre FROM productos p INNER JOIN categorias c ON p.fkCategoria = c.idCategoria INNER JOIN fabricantes f ON p.fkFabricante = f.idFabricante') as $row){ ?>
               <tr>
+              	<td><?php echo $row['id'] ?></td>
                 <td><?php echo $row['nombre'] ?></td>
                 <td><?php echo $row['descripcion'] ?></td>
                 <td><?php echo $row['preciov'] ?></td>
@@ -57,17 +59,17 @@ include_once "conn.php";
                   <div class="row justify-content-center">
                     <div class="col-6 justify-content-center">
                       <span>
-                        <form action="modificarUser.php" method="POST">
+                        <form action="modificarProducto.php" method="POST">
                           <input type=image src="img/edit.png" width="20" data-toggle="tooltip" data-placement="top" title="Modificar">
-                          <input type="hidden" value="<?php echo $row["id"]?>" name="id">
+                          <input type="hidden" value="<?php echo $row['id'] ?>" name="id">
                         </form>
                       </span>
                     </div>
                     <div class="col-6 justify-content-center">
                       <span>
-                        <form action="borrarUser.php" method="POST">
+                        <form action="borrarProducto.php" method="POST">
                           <input type=image src="img/trash.png" width="20" data-toggle="modal" data-target="#delete" >
-                          <input type="hidden" value="<?php echo $row["id"]?>" name="id">
+                          <input type="hidden" value="<?php echo $row['id'] ?>" name="id">
                         </form>
                       </span>
                     </div>
