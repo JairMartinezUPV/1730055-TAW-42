@@ -1,0 +1,138 @@
+
+/*PARA EDITAR UN ELEMENTO DEL HTML, PONEN UN . Y ENSEGUIDA LA PALABRA CLAVE*/
+.b1{
+    background-color: #197EE2;
+    border-color: #197EE2;
+    color: #FFFFFF;
+}
+
+/*EN CUANTO A LOS BOTONES, LA PALABRA HOVER ES CUANDO SE PONE EL MOUSE SOBRE ESTE*/
+.b1:hover{
+    background-color: #0C64BB;
+    border-color: #0C64BB;
+    color: #FFFFFF;
+}
+
+.b2{
+    background-color: #005CB9;
+    border-color: #005CB9;
+    color: #FFFFFF;
+}
+.b2:hover{
+    background-color: #235178;
+    border-color: #235178;
+    color: #FFFFFF;
+}
+
+.b3{
+    background-color: #014C99;
+    border-color: #014C99;
+    color: #FFFFFF;
+}
+.b3:hover{
+    background-color: #01376E;
+    border-color: #01376E;
+    color: #FFFFFF;
+}
+
+.b4{
+  background-color: #97C93C;
+  border-color: #97C93C;
+  color: #FFFFFF;
+}
+.b4:hover{
+  background-color: #7FA933;
+  border-color: #7FA933;
+  color: #FFFFFF;
+}
+
+.b5{
+  background-color: #92928A;
+  border-color: #92928A;
+  color: #FFFFFF;
+}
+.b5:hover{
+  background-color: #555555;
+  border-color: #555555;
+  color: #FFFFFF;
+}
+
+
+.login{
+  background-color: #97C93C;
+  border-color: #97C93C;
+  color: #FFFFFF;
+}
+.login:hover{
+  background-color: #7FA933;
+  border-color: #7FA933;
+  color: #FFFFFF;
+}
+
+
+
+.r1 {
+     display: flex;
+     width: 100%;
+  }
+.col1{
+  width: 85%;
+}
+.col2{
+  width: 15%;
+}
+.table1{
+  background-color: #005CB9;
+  color: #FFFFFF;
+}
+
+
+#tel th,tbody{
+  font-size: smaller;
+}
+
+#table2{
+  overflow:scroll;
+     height:50px;
+}
+
+#table3{
+  overflow:auto;
+     height:200px;
+}
+
+
+.col3{
+  width: 70%;
+}
+.col4{
+  width: 15%;
+}
+.col5{
+  width: 15%;
+}
+
+
+
+.text1{
+  text-align: justify;
+}
+
+
+.tabRepLeg {
+max-width: 600px;
+margin: 0 auto;
+}
+#tabRepLeg th, td {
+white-space: nowrap;
+}
+
+.scroller {
+    height:200px;
+    overflow-y:scroll;
+}
+
+
+body{
+  position: relative;
+}
