@@ -24,7 +24,7 @@ class MvcController{
 			//recibe a traves del metodo POST el name(html) de usuario, password y email, se almacenan los datos en una variable opropiedad de tipo array asociativo con sus respectivas propiedades (usuario, password, email)
 			$datosController = array("usuario"=>$_POST["usuarioRegistro"],"password"=>$_POST["passwordRegistro"],"email"=>$_POST["emailRegistro"])
 			//se le dice al modelo models/crud.php (Datos::registroUsuariosModel), que en el modelo Datos el metodo registroUsuariosModel reciba en sus parametros los valores $datosController y el nombre de la tabla a la cual debe de conectarse (usuarios)
-			$respuesta = Datos::registroUsuariosModel($datosController,"usuarios");
+			$respuesta = Datos::registroUsuarioModel($datosController,"usuarios");
 
 			//se imprime la respuesta en la vista
 			if ($respuesta == "succes") {
