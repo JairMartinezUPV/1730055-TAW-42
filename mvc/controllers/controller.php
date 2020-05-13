@@ -34,6 +34,40 @@ class MvcController{
 			}
 		}
 	}
+
+	//ingreso usuarios
+	public function ingresoUsuarioController(){
+		if (isset($_POST["usuarioIngreso"]) {
+			$datosController = array("usuario" => $_POST["usuarioIngreso"], 
+				                     "password" => $_POST["passwordIngreso"]];
+			$respuesta = Datos::ingresoUsuarioModel($datosController, "usuarios");
+
+			//validar la respuesta del modelo para ver si es un usuario correcto
+			if ($respuesta["usuario"]==$_POST["usuarioIngreso"] && $respuesta["password"]==$_POST["passwordIngreso"]) {
+				session_start();
+				$_SESSION["validar"] = true;
+				header("location:index.php?action=usuarios");
+			}else{
+				header("location:index.php?action=fallo");
+			}
+		}
+	}
+
+	//vistas de usuarios
+	public function vistaUsuariosController(){
+		$respuesta=Datos::vistaUsuarioModel("usuarios");
+		//utilizar un foreach para iterar un array e imprimir la consulta del modelo
+
+		foreach ($respuesta as $row => $item) {
+			echo '<tr>
+			      <td'.item["usuario"].'</td>
+			      <td'.item["password"].'</td>
+			      <td'.item["email"].'</td>
+			      <td<a href = "index.php?action=usuarios&idEditar='.$item["id"].'"<button>Editar</button></a></td>
+			      <td<a href = "index.php?action=usuarios&idBorrar='.$item["id"].'"<button>Borrar</button></a></td>
+			      </tr>';
+		}
+	}
 }
 
 ?>
