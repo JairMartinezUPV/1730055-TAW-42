@@ -29,7 +29,7 @@ class Datos extends Conexion
 	}
 
 	//modelo ingresouusarioModel
-	public funcion ingresouusarioModel($datosModel, $tabla){
+	public funcion ingresoUsuarioModel($datosModel, $tabla){
 		$stmt = Conexion::conectar()->prepare("SELECT usuario, password FROM $tabla WHERE usuario = :usuario");
 		$stmt = bindParam(":usuario", $datosModel["usuario"], PDO::PARAM_STR);
 		$stmt=execute();
@@ -37,6 +37,15 @@ class Datos extends Conexion
 		return $stmt->fetch();
 
 		$stmt->close();
+	}
+
+	//modelo vista usuarios
+	public function vistaUsuariosModel($tabla){
+		$stmt = Conexion::conectar()->prepare("SELECT id, usuario, password, email FROM $tabla");
+		$stmt->execute();
+		//fetchAll() obtiene todas las filas de un conjunto asociado al objeto PDO statmnet (stmt)
+		return $stmt->fetchAll();
+		$stmt->close(); 
 	}
 }
 
