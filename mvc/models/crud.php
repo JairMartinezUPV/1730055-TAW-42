@@ -56,6 +56,10 @@ class Datos extends Conexion
 		return $stmt->fetch();
 		$stmt->close();
 	}
+	//modelo actuializar usuario
+	public function actuializarUsuarioModel($datosModel, $tabla){
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET usuario =:usuario, password = :password, email = :email WHERE id = :id");
+	}
 }
 
 
