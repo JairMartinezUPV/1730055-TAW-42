@@ -11,6 +11,7 @@ require_once "models/crudProd.php";
 require_once "controllers/controller.php";
 
 //muestra la funcion o metodo "pagina" que se encuentra en controllers/controller.php
+$mvc = new MvcController();
 $mvc->pagina();
 
 ?>

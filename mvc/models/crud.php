@@ -8,7 +8,7 @@ class Datos extends Conexion
 	public function registroUsuarioModel($datosModel, $tabla){
 		//prepare() prepara la sentencia de SQL para que sea ejecutada por el metodo POSTantement la sentencia de SQL se puede contener desde cero para ejecutar mas parametros 
 
-		$stmt = Conexion::conectar()->("INSERT INTO %tabla (usuario, password, email) VALUES (:usuario,:password,:email)");
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (usuario, password, email) VALUES (:usuario,:password,:email)");
 
 		//bindParam() vincula una variable de PHP a un parametro de sustitucion con nombre correspondiente a la sentencia SQL que fue usada para preparar la sentencia 
 
@@ -29,7 +29,7 @@ class Datos extends Conexion
 	}
 
 	//modelo ingresouusarioModel
-	public funcion ingresoUsuarioModel($datosModel, $tabla){
+	public function ingresoUsuarioModel($datosModel, $tabla){
 		$stmt = Conexion::conectar()->prepare("SELECT usuario, password FROM $tabla WHERE usuario = :usuario");
 		$stmt = bindParam(":usuario", $datosModel["usuario"], PDO::PARAM_STR);
 		$stmt=execute();
@@ -57,7 +57,7 @@ class Datos extends Conexion
 		$stmt->close();
 	}
 	//modelo actuializar usuario
-	public function actuializarUsuarioModel($datosModel, $tabla){
+	public function actualizarUsuarioModel($datosModel, $tabla){
 		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET usuario =:usuario, password = :password, email = :email WHERE id = :id");
 		$stmt->bindParam(":usuario", $datosModel["usuario"], PDO::PARAM_STR);
 		$stmt->bindParam(":password", $datosModel["password"], PDO::PARAM_STR);
