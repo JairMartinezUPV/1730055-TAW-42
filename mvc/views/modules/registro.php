@@ -56,13 +56,13 @@
                         <form method="POST">
                             <div class="control-group">
                                 <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                                    <input type="text" placeholder="Usuario" name="usuarioIngreso" required>
+                                    <input type="text" placeholder="Usuario" name="usuarioRegistro" required>
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>
                             <div class="control-group">
                                 <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                                    <input type="password" placeholder="password" name="passwordIngreso" required>
+                                    <input type="password" placeholder="password" name="passwordRegistro" required>
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>
