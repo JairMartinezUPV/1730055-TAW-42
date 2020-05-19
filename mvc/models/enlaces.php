@@ -3,38 +3,38 @@
 class Paginas{
 	public function enlacesPaginasModel($enlaces){
 			if($enlaces == "ingresar" || $enlaces == "usuarios" || $enlaces == "registros" || $enlaces == "producto" || $enlaces == "registrarProducto" || $enlaces == "editar" || $enlaces == "editarProducto" || $enlaces == "categorias"  || $enlaces == "registrarCategoria" || $enlaces == "editarCategoria"){
-				$module = "views/module/".$enlaces.".php";
+				$modules = "views/modules/".$enlaces.".php";
 			}
 			else if($enlaces == "index"){
-				$module = "views/module/registro.php";
+				$modules = "views/modules/registro.php";
 			}
 			else if($enlaces == "ok"){
-				$module = "views/module/registro.php";
+				$modules = "views/modules/registro.php";
 			}
 			else if($enlaces == "okproduct"){
-				$module = "views/module/producto.php";
+				$modules = "views/modules/producto.php";
 			}
 			else if($enlaces == "okcategoria"){
-				$module = "views/module/categorias.php";
+				$modules = "views/modules/categorias.php";
 			}
 			else if($enlaces == "fallo"){
-				$module = "views/module/ingresar.php";
+				$modules = "views/modules/ingresar.php";
 			}
 			else if($enlaces == "cambio"){
-				$module = "views/module/usuarios.php";
+				$modules = "views/modules/usuarios.php";
 			}
 			else if($enlaces == "cambioproduct"){
-				$module = "views/module/producto.php";
+				$modules = "views/modules/producto.php";
 			}
 			else if($enlaces == "cambiocategoria"){
-				$module = "views/module/categorias.php";
+				$modules = "views/modules/categorias.php";
 			}
 			else if($enlaces == "salir"){
-				$module = "views/module/salir.php";
+				$modules = "views/modules/salir.php";
 			}else{
-				$module = "views/module/registro.php";
+				$modules = "views/modules/registro.php";
 			}
-			return $module;
+			return $modules;
 		}
 }
 ?>

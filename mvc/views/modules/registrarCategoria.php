@@ -8,7 +8,7 @@
 	}
 	
 	$registro = new MvcController();
-	$registro -> registrarCategoriaController();
+	$registro -> registroCategoriaController();
 ?>
 <h1> REGISTRO DE CATEGORIA </h1>
 

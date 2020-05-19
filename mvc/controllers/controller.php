@@ -3,50 +3,58 @@ include_once "models/crud.php";
 include_once "models/crudProd.php";
 
 	class MvcController{
-		#llamada a la plantilla
+		
+		#llamar a la plantilla
 		public function pagina(){
 			include "views/template.php";
 		}
 
-		//enlaces
-		public function enlacesPaginasController{
-			if(isset($_GET['action'])){
+		//enlace a paginas
+		public function enlacesPaginasController(){
+			if (isset($_GET['action'])) {
 				$enlaces = $_GET['action'];
 			}else{
 				$enlaces = 'index';
 			}
-			//Es el momento en que el controlador invoca el modelo enalcesPaginaModel para que muestre el listaaod de paginas
+			//es el momento en que el controlador invoca al modelo llamado enlacesPaginasModel para que muestre el listado de paginas
 			$respuesta = Paginas::enlacesPaginasModel($enlaces);
 			include $respuesta;
 		}
 
-		//registro
+		//registro de usuariops
 		public function registroUsuarioController(){
 			if(isset($_POST["usuarioRegistro"])){
-				//recibe a traves del metoddo post el name de usuario, passwoer y email se almacenan los datos en una variable o propiedad de tipo array asociativo cpn sus respectivas propiedades
-				$datosController= array("usuario"=>$_POST["usuarioRegistro"],"password"=>$_POST["passwordRegistro"],"email"=>$_POST["emailRegistro"]);
-				//se le dice al modelo model/crud.php (Datos:registroUsuarioModel), en que modelo Datos el metodo registroUsuarioMOdel reciba en sus parmatros los valores $datoaController y el nombre de la tabla a ala cual debe conectarse
 
-				$respuesta =Datos::registroUsuarioModel($datosController,"usuarios");
-				//se imprime la respuesta en la vista
-				if($respuesta=="success"){
-					header(string: "location:index.php?action=ok");
-				}else{
-					header(string: "location:index.php");
-				}
-			}
+                //recibe a traves del metodo post el name de usuario, password e emial y se almacenan los datos en una variable o propiedad de tipo array asociativo cpn sus respectivas propiedades
+                $datosController = array("usuario"=>$_POST["usuarioRegistro"],
+                                          "password"=>$_POST["passwordRegistro"],
+                                          "email"=>$_POST["emailRegistro"]);
+
+				//Se mandan los datos al modelo 
+                $respuesta = Datos::registroUsuarioModel($datosController,"usuarios");
+
+                //se imprime la respuesta en la vista
+                if($respuesta == "success"){
+                    header("location:index.php?action=ok");
+                }
+                else{
+                    header("location:index.php");
+                    echo "error";
+                }
+           
+            }
 		}
 
 		//registro de productos
 		public function registroProductoController(){
 			if(isset($_POST["productoRegistro"])){
-                //recibea traves del metodo post nel name de nombre, descripcion, pc, pv, invetnario y se almacenan los datos en una variable o pripoead de tipo array asociativo con sus respectivas propiedades.
+
+                //recibe a traves del metodo post el name de nombre, descripcion, pv, pc e invetnario y se almacenan los datos en una variable o propiedad de tipo array asociativo cpn sus respectivas propiedades
                 $datosController = array("nombre"=>$_POST["productoRegistro"],
                                           "descripcion"=>$_POST["descripcionRegistro"],
                                           "pv"=>$_POST["pvRegistro"],
                                           "pc"=>$_POST["pcRegistro"],
                                           "inventario"=>$_POST["inventarioRegistro"]);
-                 
                  //Se mandan los datos al modelo 
                 $respuesta = Datos2::registroProductoModel($datosController,"productos");
                 //se imprime la respuesta en la vista
@@ -60,7 +68,7 @@ include_once "models/crudProd.php";
             }
 		}
 
-		//registro de categoerias
+		//registro de categorias
 		public function registroCategoriaController(){
 			if(isset($_POST["categoriaRegistro"])){
 
@@ -81,40 +89,47 @@ include_once "models/crudProd.php";
             }
 		}
 
-		//INgreso usuarios
+		//ingreso usuario
 		public function ingresoUsuarioController(){
-			if(isset($_POST["usuarioIngreso"])){
-				$datosController= array("usuario"=>$_POST["usuarioIngreso"],"password"=>$_POST["passwordIngreso"]);
-				$respuesta= Datos::ingresoUsuarioModel($datosController,"usuarios");
-				//validar la repsuesta de modelo
-				if($respuesta["usuario"]==$_POST["usuarioIngreso"] $$ $respuesta["password"]== $_POST["passwordIngreso"]){
-					$_SESSION["validar"]=true;
+			if (isset($_POST["usuarioIngreso"])){
+				$datosController=array ("usuario" => $_POST["usuarioIngreso"],
+										 "password" => $_POST["passwordIngreso"]);
+				$respuesta = Datos::ingresoUsuarioModel($datosController, "usuarios");
+
+				//Validar la respuesta del modelo para ver si es un usuario correcto.
+				if($respuesta["usuario"] == $_POST["usuarioIngreso"] && $respuesta["password"] == $_POST["passwordIngreso"]){
+					session_start();
+					$_SESSION["validar"] = true;
 					header("location:index.php?action=usuarios");
 				}else{
-					header("location:index.php?action=fallo");
+					header(".ocation: index.php?action=fallo");
 				}
+
 			}
 		}
 
-
-		//Vista de usuarios
+		//vista de usuarios
 		public function vistaUsuariosController(){
-			$respuesta=Datos::vistaUsuarioModel("usuarios");
+			$respuesta = Datos:: vistaUsuariosModel("usuarios");
+			//Utilizar un foreach para iterar un array e imprimir la consulta del modelo
+
 			foreach ($respuesta as $row => $item) {
 				echo '<tr>
-						<td>'.$item["usuario"].'</td>
-						<td>'.$item["password"].'</td>
-						<td>'.$item["email"].'</td>
-						<td><a href=index.php?action=editar&idBorrar='.$item["id"].'<button>Borrar</button></td>
-
-						<td><a href=index.php?action=usuarios&idEditar='.$item["id"].'<button>Editar</button></td>';
+					<td>'.$item["usuario"].'</td>
+					<td>'.$item["password"].'</td>
+					<td>'.$item["email"].'</td>
+					<td><a href="index.php?action=editar&id='.$item["id"].
+					'"><button>Editar</button></a></td>
+					<td><a href="index.php?action=usuarios&idBorrar='.$item["id"].
+					'"><button>Borrar</button></a></td>';
 			}
 		}
 
-		//Vista de productos
+		//vista de productos
 		public function vistaProductosController(){
 			$respuesta = Datos2:: vistaProductosModel("productos");
-			//se utiliza un foreach para recorrer un array e imprimir la consulta del modelo
+			//Utilizar un foreach para iterar un array e imprimir la consulta del modelo
+
 			foreach ($respuesta as $row => $item) {
 				echo '<tr>
 					<td>'.$item["nombre"].'</td>
@@ -129,7 +144,7 @@ include_once "models/crudProd.php";
 			}
 		}
 
-		//Vista de categorias
+		//vista de categorias
 		public function vistaCategoriasController(){
 			$respuesta = Datos2:: vistaCategoriasModel("categorias");
 			//Utilizar un foreach para iterar un array e imprimir la consulta del modelo
@@ -144,19 +159,20 @@ include_once "models/crudProd.php";
 			}
 		}
 
-		//Editar usuario
+		//editar categorias
 		public function editarUsuarioController(){
-			$datosController=$_GET["id"];
+			$datosController = $_GET["id"];
 			$respuesta=Datos::editarUsuarioModel($datosController,"usuarios");
 
-			//Diseñar la estructura de un formulario para que se muestre los datos de la consulta generada en el modelo.
-			echo ('<input type="hidden" value="'.$respuesta["id"].'" name=""idEditar">
+			//Diseñar la estructura de un formulario para que se muestren losdatos de la consulta generada en el modelo
+			echo ' <input type="hidden" value="'.$respuesta["id"].'" name="idEditar" required>
 			<input type="text" value="'.$respuesta["usuario"].'" name="usuarioEditar" required>
 			<input type="text" value="'.$respuesta["password"].'" name="passwordEditar" required>
-			<input type="text" value="'.$respuesta["email"].'" name="emailEditar" required>');
+			<input type="text" value="'.$respuesta["email"].'" name="emailEditar" required>
+			<input type="submit" value="Confirmar">';
 		}
 
-		//Editar producto
+		//editar producto
 		public function editarProductoController(){
 			$datosController = $_GET["id"];
 			$respuesta=Datos2::editarProductoModel($datosController,"productos");
@@ -171,7 +187,7 @@ include_once "models/crudProd.php";
 			<input type="submit" value="Confirmar">';
 		}
 
-		//Editar categoria
+		//editar categoria
 		public function editarCategoriaController(){
 			$datosController = $_GET["id"];
 			$respuesta=Datos2::editarCategoriaModel($datosController,"categorias");
@@ -181,20 +197,25 @@ include_once "models/crudProd.php";
 			<input type="text" value="'.$respuesta["nombre"].'" name="categoriaEditar" required>
 			<input type="submit" value="Confirmar">';
 		}
-       
+
+		//actualizar usuario
 		public function actualizarUsuarioController(){
-			if(isset($_POST["usuarioEditar"])){
-				$datosController=array("id"=>$_POST["idEditar"], "usuario"=>$_POST["usuarioEditar"],"password"=>$_POST["passwordEditar"], "email"=>$_POST["emailEditar"]);
+			if (isset($_POST["usuarioEditar"])) {
+				$datosController=array("id"=>$_POST["idEditar"],
+										"usuario"=>$_POST["usuarioEditar"],
+										"password"=>$_POST["passwordEditar"],
+										"email"=>$_POST["emailEditar"]);
 				$respuesta=Datos::actualizarUsuarioModel($datosController,"usuarios");
-				if($respuesta=="succes"){
-					header("location:index.php?action=cambio");
+
+				if($respuesta == "success"){
+					header("location: index.php?action=cambio");
 				}else{
-					echo("error");
+					echo "error";
 				}
 			}
 		}
 
-		//Actualizar producto
+		//actualizar producto
 		public function actualizarProductoController(){
 			if (isset($_POST["productoEditar"])) {
 				$datosController=array("id"=>$_POST["idEditar"],
@@ -213,7 +234,7 @@ include_once "models/crudProd.php";
 			}
 		}
 
-		//Actualizar categoria
+		//actualizar categoria
 		public function actualizarCategoriaController(){
 			if (isset($_POST["categoriaEditar"])) {
 				$datosController=array("id"=>$_POST["idEditar"],
@@ -228,17 +249,19 @@ include_once "models/crudProd.php";
 			}
 		}
 
-		public function borrarUsuariosController(){
+		//borrar usuario
+		public function borrarUsuarioController(){
+
 			if(isset($_GET["idBorrar"])){
-				$datosController=$_GET["idBorrar"];
+				$datosController = $_GET["idBorrar"];
 				$respuesta=Datos::borrarUsuarioModel($datosController,"usuarios");
-				if($respuesta=="success"){
-					header("location:index.php?action=usuarios");
+				if ($respuesta=="success") {
+					header("location: index.php?action=usuarios");
 				}
 			}
 		}
 
-		//Borrar producto
+		//borrar producto
 		public function borrarProductoController(){
 			if(isset($_GET["idBorrar"])){
 				$datosController = $_GET["idBorrar"];
@@ -249,7 +272,7 @@ include_once "models/crudProd.php";
 			}
 		}
 
-		//Borrar categoria
+		//borrar categoria
 		public function borrarCategoriaController(){
 			if(isset($_GET["idBorrar"])){
 				$datosController = $_GET["idBorrar"];
@@ -260,14 +283,16 @@ include_once "models/crudProd.php";
 			}
 		}
 
-		//LISTA DE MODELOS POR DESARROLLAR:
-		/*
-		* 1. registroUsuariosModel
-		* 2. ingresoUsuariosModel
-		* 3. vistaUsuarioModel
-		* 4. editarUsuarioModel
-		* 5. actualizarUsuarioModel
-		* 6. borrarUsuarioModel
-		*/
 	}
+
+		//LISTA DE METODOS DE MODELOS A DESARROLLAR
+		/*
+		1. registroUsuarioModel --ok
+		2. ingresarUsuarioModel --ok
+		3. vistaUsuarioModel --ok
+		4. editarUsuarioModel --ok
+		5. actualizarUsuarioModel --ok
+		6. borrarUsuarioModel --ok
+		3. actualizarUsuarioModel --ok
+		*/
 ?>

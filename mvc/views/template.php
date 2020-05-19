@@ -86,16 +86,18 @@ padding:10px;
 </head>
 
 <body>
-<!--Inclur la navgeacion (estilo navar) en todos los archivos-->
-<?php include "module/navegacion.php"; ?>
-<!--construimos una seccion que va a ser variable para mostrar todos y cada  de los controladores-->
-<section>
+<!-- Incluir la navegacion navbar en todos los archivos -->
 <?php 
-	$mvc = new MvcController();
-	$mvc -> enlacesPaginasController();
+include "modules/navegacion.php"; 
+?>
+<!-- Contruimos una seccion que va  a ser variable para mostrar todos y cada uno de los controladores -->
+<section>
 
- ?>
+	<?php
+		$mvc = new MvcController();
+		$mvc -> enlacesPaginasController();
+	?>
+
 </section>
-
 </body>
 </html>

@@ -1,10 +1,10 @@
 <?php
-	include_once "controllers/controller.php";
-	$registro = new MvcController();
-	$registro -> registrarUsuarioController();
+    include_once "controllers/controller.php";
+    $registro = new MvcController();
+    $registro -> registroUsuarioController();
 ?>
 
-		<section class="page-section" id="ingresar">
+        <section class="page-section" id="ingresar">
             <div class="container">
                 <!-- Contact Section Heading-->
                 <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Registrar</h2>
@@ -45,12 +45,23 @@
                 </div>
             </div>
         </section>
+
+<!--<h1> REGISTRO </h1>
+
+    <form method="POST">
+        <input type="text" placeholder="Usuario" name="usuarioRegistro" required>
+        <input type="password" placeholder="password" name="passwordRegistro" required>
+        <input type="email" placeholder="email" name="emailRegistro" required>
+        <input type="submit" value="Enviar">
+    </form>
+-->
 <?php
-	if (isset($_GET["action"])) {
-		if($_GET["action"] == "ok"){
-			echo "Registro exitoso";
-		}else{
-			echo "Error en el registro";
-		}
-	}
+    if (isset($_GET["action"])) {
+        if($_GET["action"] == "ok"){
+            echo "Registro exitoso";
+        }else{
+            echo "Error en el registro";
+        }
+    }
+
 ?>
