@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-05-2020 a las 16:06:50
+-- Tiempo de generación: 22-05-2020 a las 16:08:53
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.5
 
@@ -20,6 +20,18 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `ejercicio`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `carrera`
+--
+
+CREATE TABLE `carrera` (
+  `id` int(11) NOT NULL,
+  `nombre` int(11) NOT NULL,
+  `fkUniversidad` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -42,18 +54,6 @@ CREATE TABLE `estudiante` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `facultad`
---
-
-CREATE TABLE `facultad` (
-  `id` int(11) NOT NULL,
-  `nombre` int(11) NOT NULL,
-  `fkUniversidad` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `universidad`
 --
 
@@ -67,19 +67,19 @@ CREATE TABLE `universidad` (
 --
 
 --
+-- Indices de la tabla `carrera`
+--
+ALTER TABLE `carrera`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `facultad_ibfk_1` (`fkUniversidad`);
+
+--
 -- Indices de la tabla `estudiante`
 --
 ALTER TABLE `estudiante`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fkFacultad` (`fkFacultad`),
   ADD KEY `fkUniversidad` (`fkUniversidad`);
-
---
--- Indices de la tabla `facultad`
---
-ALTER TABLE `facultad`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `facultad_ibfk_1` (`fkUniversidad`);
 
 --
 -- Indices de la tabla `universidad`
@@ -92,16 +92,16 @@ ALTER TABLE `universidad`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `carrera`
+--
+ALTER TABLE `carrera`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `estudiante`
 --
 ALTER TABLE `estudiante`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT de la tabla `facultad`
---
-ALTER TABLE `facultad`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `universidad`
@@ -114,17 +114,17 @@ ALTER TABLE `universidad`
 --
 
 --
+-- Filtros para la tabla `carrera`
+--
+ALTER TABLE `carrera`
+  ADD CONSTRAINT `carrera_ibfk_1` FOREIGN KEY (`fkUniversidad`) REFERENCES `universidad` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Filtros para la tabla `estudiante`
 --
 ALTER TABLE `estudiante`
-  ADD CONSTRAINT `estudiante_ibfk_1` FOREIGN KEY (`fkFacultad`) REFERENCES `facultad` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `estudiante_ibfk_1` FOREIGN KEY (`fkFacultad`) REFERENCES `carrera` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `estudiante_ibfk_2` FOREIGN KEY (`fkUniversidad`) REFERENCES `universidad` (`id`);
-
---
--- Filtros para la tabla `facultad`
---
-ALTER TABLE `facultad`
-  ADD CONSTRAINT `facultad_ibfk_1` FOREIGN KEY (`fkUniversidad`) REFERENCES `universidad` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
