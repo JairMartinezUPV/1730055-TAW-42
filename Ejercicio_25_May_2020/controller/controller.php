@@ -14,6 +14,16 @@ include_once "models/crudProd.php";
 			}
 		}
 
+		public function vistaUsersController(){
+			$respuesta = Datos::vistaUsersModel("users");
+			foreach ($respuesta as $row => $item) {
+				echo '
+					<tr>
+						<td>
+							<a href="index.php?actiom=usuarios&idUserEditar='.$item["id]"';
+			}
+		}
+
 	}
 
 ?>
