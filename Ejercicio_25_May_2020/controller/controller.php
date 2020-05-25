@@ -9,7 +9,7 @@ include_once "models/crudProd.php";
 				$datosController = array("user"=>$_POST["txtUser"],"password"=>$_POST["txtPassword"]);
 				$respuesta = Datos::ingresoUsuarioModel($datosController,"users");
 				if ($respuesta["usuario"]==$_POST["txtUser"] && password_verify($_POST["txtPassword"],$respuesta["contrasena"])) {
-					# code...
+					session_start()
 				}
 			}
 		}
