@@ -183,6 +183,40 @@
             <?php
         }
 
+        public function actualizarUserController()
+        {
+            if (isset($_POST["nusuariotxtEditar"])) {
+                $_POST["contratxtEditar"] = password_hash($_POST["contratxtEditar"], PASSWORD_DEFAULT);
+                $datosController = array("id"=>$_POST["idUserEditar"],"nusuario"=>$_POST["nusuariotxtEditar"],"ausuario"=>$_POST["ausuariotxtEditar"], "usuario"=>$_POST["usuariotxtEditar"],"contra"=>$_POST["contratxtEditar"],"email"=>$_POST["uemailtxtEditar"]);
+                $respuesta = Datos::actualizarUserModel($datosController, "users");
+                if ($respuesta == "success") {
+                     echo '
+                        <div class="col-md-6 mt-3">
+                            <div class="alert alert-success alert-dismissible">
+                                <button class="close" type="button" data-dismiss="alert" aria-hidden="true">x</button>
+                                    <h5>
+                                        <i class="icon fas fa-check"></i>
+                                    </h5>
+                                    Usuario agregado con exito.
+                            </div>
+                        </div>
+                    ';
+                }else{
+                    echo '
+                        <div class="col-md-6 mt-3">
+                            <div class="alert alert-success alert-dismissible">
+                                <button class="close" type="button" data-dismiss="alert" aria-hidden="true">x</button>
+                                    <h5>
+                                        <i class="icon fas fa-check"></i>
+                                    </h5>
+                                    ¡Error!
+                            </div>
+                        </div>
+                    ';
+                }
+            }
+        }
+
         }
 
     }
