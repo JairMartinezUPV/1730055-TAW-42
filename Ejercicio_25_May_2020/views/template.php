@@ -1,20 +1,11 @@
+<!--Es la plantilla que vera el usuario al ejecutar la aplicación -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>Template</title>
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
 <style>
-
-button{
-  background-color: white;
-  color: black;
-  border: 2px solid #008CBA;
-}
 
 nav{
 position:relative;
@@ -80,7 +71,7 @@ table{
 position:relative;
 margin:auto;
 width:100%;
-left:-10%;
+left:-5%;
 }
 
 table thead tr th{
@@ -90,23 +81,24 @@ padding:10px;
 table tbody tr td{
 padding:10px;
 }
+
 </style>
 
 </head>
 
 <body>
+<!-- Incluir la navegacion navbar en todos los archivos -->
+<?php 
+include "modules/navegacion.php"; 
+?>
+<!-- Contruimos una seccion que va  a ser variable para mostrar todos y cada uno de los controladores -->
+<section>
 
   <?php
-  error_reporting(E_ERROR | E_PARSE);
-  include "modules/navegacion.php";
-  ?>
-
-  <section>
-    <?php
     $mvc = new MvcController();
     $mvc -> enlacesPaginasController();
-     ?>
-  </section>
+  ?>
 
+</section>
 </body>
 </html>

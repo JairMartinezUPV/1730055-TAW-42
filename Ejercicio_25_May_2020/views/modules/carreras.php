@@ -54,7 +54,7 @@
   <tbody>
     <center>
     <!--boton para agregar una carrera-->
-    <a href="index.php?action=nuevaCarrera"><button>Nueva carrera</button></a>
+    <a href="index.php?action=nuevaCarrera"><button>Agregar carrera</button></a>
     </center>
     <?php
 

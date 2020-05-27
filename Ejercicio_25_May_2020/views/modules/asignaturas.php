@@ -43,7 +43,7 @@
 
  <h1>Lista de Asignaturas</h1>
 
-<table class="table table-condensed">
+<table class="table-condensed">
   <thead>
     <tr>
       <th>Carrera</th>
@@ -55,7 +55,7 @@
   <tbody>
     <center>
     <!--boton para agregar una asignatura-->
-    <a href="index.php?action=nuevaAsignatura"><button>Nueva asignatura</button></a>
+    <a href="index.php?action=nuevaAsignatura"><button>Agregar asignatura</button></a>
     </center>
     <?php
 

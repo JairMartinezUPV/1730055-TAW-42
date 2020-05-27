@@ -41,9 +41,10 @@
   ======================================================== -->
 </head>
 
- <h1>Lista de Estuidantes</h1>
+<div class="container">
+  <h1>Lista de Estuidantes</h1>
 
-<table class="table table-condensed">
+<table class="table table-condensed" align="center">
   <thead>
     <tr>
       <th>Cedula</th>
@@ -75,3 +76,6 @@
   }
 
  ?>
+
+</div>
+ 

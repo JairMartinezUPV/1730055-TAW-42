@@ -55,7 +55,7 @@
   <tbody>
     <center>
     <!--boton para agregar una universidad-->
-    <a href="index.php?action=nuevaUniversidad"><button>Nueva universidad</button></a>
+    <a href="index.php?action=nuevaUniversidad"><button>Agregar universidad</button></a>
     </center>
     <?php
 
