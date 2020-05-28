@@ -209,7 +209,40 @@
                                     <h5>
                                         <i class="icon fas fa-check"></i>
                                     </h5>
-                                    ¡Error!
+                                    Error al actualizar usuario
+                            </div>
+                        </div>
+                    ';
+                }
+            }
+        }
+
+        public function eliminarUserController(){
+            if (isset($_GET["idBorrar"])) {
+                $datosController = $_GET["idBorrar"];
+                $respuesta = Datos::eliminarUserModel($datosController,"users");
+
+                if ($respuesta == "success") {
+                     echo '
+                        <div class="col-md-6 mt-3">
+                            <div class="alert alert-success alert-dismissible">
+                                <button class="close" type="button" data-dismiss="alert" aria-hidden="true">x</button>
+                                    <h5>
+                                        <i class="icon fas fa-check"></i>
+                                    </h5>
+                                    Usuario eliminado con exito.
+                            </div>
+                        </div>
+                    ';
+                }else{
+                    echo '
+                        <div class="col-md-6 mt-3">
+                            <div class="alert alert-success alert-dismissible">
+                                <button class="close" type="button" data-dismiss="alert" aria-hidden="true">x</button>
+                                    <h5>
+                                        <i class="icon fas fa-check"></i>
+                                    </h5>
+                                    Error al eliminar el usuario
                             </div>
                         </div>
                     ';
