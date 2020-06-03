@@ -275,5 +275,124 @@
                     </div>
                 </div>';
         }
-        
+
+        public function vistaProductsController(){
+            $respuesta = Datos::vistaProductsModel("product");
+            foreach ($respuesta as $row => $item){
+                echo '
+                    <tr>
+                        <td>
+                            <a href="index.php?action=usuarios&idUserEditar='.$item["id"].'" class="btn btn-warning btn-sm btn-icon" title="Editar" data-toggle="tooltip"><i class=fa fa-edit"></i></a>
+                        </td>
+                        <td>
+                        <a href="index.php?action=usuarios&idBorrar='.$item["id"].'" class="btn btn-warning btn-sm btn-icon" title="Eliminar" data-toggle="tooltip"><i class=fa fa-trash"></i></a>
+                        </td>
+                        <td>'.$item["id"].'</td>
+                        <td>'.$item["codigo"].'</td>
+                        <td>'.$item["producto"].'</td>
+                        <td>'.$item["fecha"].'</td>
+                        <td>'.$item["precio"].'</td>
+                        <td>'.$item["stock"].'</td>
+                        <td>'.$item["categoria"].'</td>
+                        <td><a href="index.php?action=inventario&idProductAdd='.$item["id"].'" class="btn_warning btn -sm btn-icon" tittle="Agregar Stock""
+                    </tr>
+                ';
+            }
+        }
+
+        public function registrarProductController(){
+        	?>
+        	<div class="col-md-6 mt-3"
+        		<div class="card card-primary">
+        		 	<div class="card-header">
+        		 		<h4><b>Registro</b> de Productos</h4>
+        		 		<div class="form-body">
+        		 			<form method="POST" action="index.php?action?=inventario">
+        		 				<div class="form-group">
+        		 					<label for="nombretxt">Precio: </label>
+        		 					<input class="form-control" name="nombretxt" id="nombretxt" type="number" min="1" required placeholder="Nombre del producto">
+
+        }
+
+         /*-- Esta funcion permite insertar productos llamando al modelo  que se encuentra en  elarchivo crud de modelos confirma con un isset que la caja de texto del codigo este llena y procede a llenar en una variable llamada datos controller este arreglo se manda como parametro aligual que elnombre de la tabla,una vez se obtiene una respuesta de la funcion del modelo de inserccion 
+        tenemos que checar si la respuesta fue afirmativa hubo un error y mostrara los respectivas alerta,para insertar datos en la tabla de historial se tiene que mandar a un modelollamado ultimoproductmodel este traera el ultimo dato insertado que es el id del producto que se manda en elarray de datoscontroller2 junto al nombre de la tabla asi insertando los datos en la tabla historial --*/
+
+        //////////////////////////////////////falta
+        public function insertarProductController(){
+        	else {
+        		echo '
+                        <div class="col-md-6 mt-3">
+                            <div class="alert alert-danger alert-dismissible">
+                                <button class="close" type="button" data-dismiss="alert" aria-hidden="true">x</button>
+                                <h5>
+                                    <i class="icon fas fa-ban"></i>
+                                    ¡Error!
+                                </h5>
+                                Se ha producido un error al momento de agregar el producto, trate de nuevo.
+                            </div>
+                        </div>
+                    ';
+                }
+        }
+        <?php
+        public function editarProductController(){
+        	$datosController = $_GET["idProductEditar"];
+        	$respuesta = Datos::editarProductModel($datosController,"products");
+        	?>
+        	<div class="col-mod-6 mt-3">
+        		<div class="card card-warning">
+        			<div class="card card-header">
+        				<h4><b>Editor</b> de Productos</h4>
+        			</div>
+        			<div class="card-body">
+        				<form method="post" action="index.php?action=inventario">
+        					<div class="form-group">
+        						<input type="hidden" name="idProductEditar" class="form-control" value="<?php echo $respuesta["id"];?>">
+        					</div>
+        					<div class="form-group">
+        						<label for="stocktxteditar">Stock: </label>
+        						 <input class="form-control" name="stocktxteditar" id="stocktxteditar" type="number" min="1" value="<?php echo $respuesta["stock"];?>" required placeholder="Cantidad de stock del producto">
+        					</div
+        			</div>
+        }
+
+         /*-- Esta funcion permite actualizar los datos en la tabla productos a partir del metodo form anterior mandando atravez del modelo del crud a traves del arreglo  y con la variable respuesta mandamos dichos datos porque se llama al modelo actualizarproductsmodel si en el modelo se realizo correctamente entonces mandara una alerta decorrecto y pasara allenar dichos datos en elmodelo de insertar historial model en caso contrario no se hara nada y mostrara mensaje de error --*/
+        public funtion actualizarProductController(){
+        	if (isset($_POST["codigotxteditar"])) {
+        		$datosController = array("id"=>$_POST["idProductEditar"],"codigo"=>$_POST["codigotxteditar"],"precio"=>$_POST["preciotxteditar"],"stock"=>$_POST["stocktxteditar"],"categoria"=>$_POST["categoriaeditar"],"nombre"=>$_POST["nombretxteditar"]);
+        		$respuesta = Datos::actualizarProductsModel($datosController,"products");
+        		if ($respuesta == "success") {
+        			$datoscontroller2 = array("user"=>$_SESSION["id"],"cantidad"=>$_POST["stocktxteditar"],"producto"=>$_POST["idProductEditar"],"note"=$_POST["nombre_usuario"]."agrego/compro","refernce"=>$_POST["referenciatxteditar"]);
+        			$respuesta2 = Datos::insertarHistorialModel($datosController2,"historial");
+        				echo '
+                        <div class="col-md-6 mt-3">
+                            <div class="alert alert-danger alert-dismissible">
+                                <button class="close" type="button" data-dismiss="alert" aria-hidden="true">x</button>
+                                <h5>
+                                    <i class="icon fas fa-ban"></i>
+                                    ¡Exito!
+                                </h5>
+                                Producto eliminado con exito.
+                            </div>
+                        </div>
+                    ';
+        		} else {
+        			echo '
+                        <div class="col-md-6 mt-3">
+                            <div class="alert alert-danger alert-dismissible">
+                                <button class="close" type="button" data-dismiss="alert" aria-hidden="true">x</button>
+                                <h5>
+                                    <i class="icon fas fa-ban"></i>
+                                    ¡Error!
+                                </h5>
+                                Se ha producido un error al momento de eliminar el producto, trate de nuevo.
+                            </div>
+                        </div>
+                    ';
+        		}
+        	}
+        }
+
+
+     
 ?>
