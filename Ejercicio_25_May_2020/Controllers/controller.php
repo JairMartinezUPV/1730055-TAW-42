@@ -392,6 +392,25 @@
         		}
         	}
         }
+        <?php
+        public function addProductController(){
+        	$datosController = $_GET["idProductAdd"];
+        	$respuesta = Datos::editarProductModel($datosController,"products");
+        	?>
+        	<div class="col-md-6 mt-3"
+        		<div class="card card-warning">
+        			<div class="card card-header">
+        				<h4><b>Agregar</b> stock del producto</h4>
+        			</div>
+        			<div class="card-body">
+        				<form method="POST" action="index.php?action=inventario">
+        				<div class="form-group">
+        					<input type="hidden">
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+        }
 
 
      
