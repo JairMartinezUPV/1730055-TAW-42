@@ -514,6 +514,21 @@
         	<?php
         }
 
+        public function vistaHistorialController(){
+        	$respuesta = Datos::vistaHistorialModel("historial");
+        	foreach ($respuesta as $row => $item) {
+        		echo '
+        			<tr>
+        				<td>'.$item["usuario"].'</td>
+        				<td>'.$item["producto"].'</td>
+        				<td>'.$item["nota"].'</td>
+        				<td>'.$item["cantidad"].'</td>
+        				<td>'.$item["referencia"].'</td>
+        				<td>'.$item["fecha"].'</td>
+        		';
+        	}
+        }
+
         ?>
 
 
