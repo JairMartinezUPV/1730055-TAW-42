@@ -412,7 +412,7 @@
         	</div>
         }
 
-        public function actualizarStockController(){
+        public function actualizar1StockController(){
         	if (isset($_POST["addstocktxt"])) {
         		$datosController = array("id"=>$_POST["idProductAdd"],"stock"=>$_POST["addstocktxt"]);
         		$respuesta = Datos::pushProductsModel($datosController,"products");
@@ -427,7 +427,7 @@
                                     <i class="icon fas fa-ban"></i>
                                     ¡Exito!
                                 </h5>
-                                Producto actualizado con exito.
+                                stock actualizado con exito.
                             </div>
                         </div>
                     ';
@@ -447,6 +447,44 @@
         		}
         	}
         }
+
+        public function actualizar2StockController(){
+        	if (isset($_POST["addstocktxt"])) {
+        		$datosController = array("id"=>$_POST["idProductAdd"],"stock"=>$_POST["delstocktxt"]);
+        		$respuesta = Datos::pushProductsModel($datosController,"products");
+        		if ($respuesta=="success") {
+        			$datoscontroller2 = array("user"=>$_SESSION["id"],"cantidad"=>$_POST["delstocktxt]","Producto"=>$_POST["idProductAdd"],"note"=>$_SESSION["nombre_usuario"]."agrego/compro","reference"=>$_POST["referenciatxteditar"];
+        				$respuesta2 = Datos::insertarHistorialModel($datoscontroller2,"historial");
+        				echo '
+                        <div class="col-md-6 mt-3">
+                            <div class="alert alert-danger alert-dismissible">
+                                <button class="close" type="button" data-dismiss="alert" aria-hidden="true">x</button>
+                                <h5>
+                                    <i class="icon fas fa-ban"></i>
+                                    ¡Exito!
+                                </h5>
+                                stock actualizado con exito.
+                            </div>
+                        </div>
+                    ';
+        		}else{
+        			echo '
+                        <div class="col-md-6 mt-3">
+                            <div class="alert alert-danger alert-dismissible">
+                                <button class="close" type="button" data-dismiss="alert" aria-hidden="true">x</button>
+                                <h5>
+                                    <i class="icon fas fa-ban"></i>
+                                    ¡Exito!
+                                </h5>
+                                Error al actualizar
+                            </div>
+                        </div>
+                    ';
+        		}
+        	}
+        }
+
+
 
 
      
