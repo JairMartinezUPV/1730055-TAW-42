@@ -483,6 +483,38 @@
         		}
         	}
         }
+        <?php
+        public function delProductController(){
+        	$datoscontroller = $_GET["idProductDel"];
+        	$respuesta = Datos::editarProductModel($datoscontroller,"product");
+        	?>
+        	<div class="col-md-6 mt-3">
+        		<div class="card card-danger">
+        			<div class="card-header">
+        				<h4><b>Eliminar</b> stock al producto</h4>
+        			</div>
+        			<div class="card-body">
+        				<form method="POST" action="index.php?=inventario">
+        					<div class="form-group">
+        						<input type="hidden" name="idProductDel" class="form-control" value="<?php echo $respuesta["id"];?>" required>
+        					</div>
+        					<div class="form-group">
+        						<label for="codigotxtEditar">Stock: </label>
+        						<input class="form-control" name="delstocktxt" id="delstocktxt" type="number" min="1" max="<?php echo $respuesta["stock"];?>" value="<?php echo $respuesta["stock"];?>" required placeholder="Stock de producto">
+        					</div>
+        					<div class="form-group">
+        						<label for="referenciatxtdel">Motivo: </label>
+        						<input class="form-control" name="referenciatxtdel" id="referenciatxtdel" type="text" required placeholder="Referencia de producto">
+        					</div>
+        					<button clas="btn btn-primary" type="submit">Realizar Cambio</button>
+        				</form> 
+        			</div>
+        		</div>
+        	</div>
+        	<?php
+        }
+
+        ?>
 
 
 
