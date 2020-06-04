@@ -525,6 +525,22 @@
         				<td>'.$item["cantidad"].'</td>
         				<td>'.$item["referencia"].'</td>
         				<td>'.$item["fecha"].'</td>
+        			</tr>
+        		';
+        	}
+        }
+
+        public function vistaCategoriaControlle(){
+        	$respuesta = Datos::vistaCategoriaModel("categories");
+        	foreach ($respuesta as $row => $item) {
+        		echo '
+        			<tr>
+        				<td>
+        				<a href="index.php?action=categorias&idCategoryEditar'.$item["idc"].'" class="btn btn-warning btn-sm btn-icon" title="Editar"></a>
+        				</td>
+        				<td>
+        				</td>
+        			</tr>
         		';
         	}
         }
