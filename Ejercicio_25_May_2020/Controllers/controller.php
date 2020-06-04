@@ -545,6 +545,25 @@
         	}
         }
 
+        public function registrarCategoryController(){
+        	?>
+        	<div class="col-md-6 mt-3">
+        		<div class="card card-primary">
+        			<div class="card-header">
+        				<h4><b>Registro</b> de categorias</h4>
+        			</div>
+        			<div class="card-body">
+        				<form method="post" action="index.php?action=categorias">
+        					<div class="form-group">
+        						<label for="ncategoriatxt">Nombre de la categoria: </label>
+        						<input class="form-control" type="text" name="ncategoriatxt" id="ncategoriatxt" placeholder="Ingrese la descripcion de la categoria">
+        					</div>
+        				</form>
+        			</div>
+        		</div>
+        	</div>
+        }
+
         ?>
 
 
