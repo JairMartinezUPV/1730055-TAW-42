@@ -453,7 +453,7 @@
         		$datosController = array("id"=>$_POST["idProductAdd"],"stock"=>$_POST["delstocktxt"]);
         		$respuesta = Datos::pushProductsModel($datosController,"products");
         		if ($respuesta=="success") {
-        			$datoscontroller2 = array("user"=>$_SESSION["id"],"cantidad"=>$_POST["delstocktxt]","Producto"=>$_POST["idProductAdd"],"note"=>$_SESSION["nombre_usuario"]."agrego/compro","reference"=>$_POST["referenciatxteditar"];
+        			$datoscontroller2 = array("user"=>$_SESSION["id"],"cantidad"=>$_POST["delstocktxt]","Producto"=>$_POST["idProductAdd"],"note"=>$_SESSION["nombre_usuario"]."quito","reference"=>$_POST["referenciatxteditar"];
         				$respuesta2 = Datos::insertarHistorialModel($datoscontroller2,"historial");
         				echo '
                         <div class="col-md-6 mt-3">
