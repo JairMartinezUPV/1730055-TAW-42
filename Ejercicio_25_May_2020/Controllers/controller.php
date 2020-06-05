@@ -597,6 +597,34 @@
         		}
         	}
         }
+        <?php
+        public function editarCategoryController(){
+        	$datoscontroller = $_GET["idCategoryEditar"];
+        	$respuesta = Datos::editarCategoryModel($datosController,"categories");
+        	?>
+        	<div class="col-md-6 mt-3">
+        		<div class="card card-warning">
+        			<div class="card-header">
+        				<h4><b>Editor</b> de categorias</h4>
+        			</div>
+        			<div class="card-body">
+        				<form method="post" action="index.php?action=categorias">
+        					<div class="form-group">
+        						<input type="hidden" name="idCategoryEditar" class="form-control" value="<?php echo $respuesta["id"];?>" required>
+        					</div>
+        					<div class="form-group">
+        						<label for="ncategoriatxt">Nombre de la categoria: </label>
+        						 <input class="form-control" name="ncategoriatxteditar" id="ncategoriatxt" type="text" value="<?php echo $respuesta["nombre_categoria"];?>" required placeholder="Ingrese el nombre de la categoria">
+        					</div>
+        					<div class="form-group">
+        						<label for="dcategoriatxt">Descripcion de la categoria: </label>
+        						 <input class="form-control" name="dcategoriatxteditar" id="dcategoriatxt" type="text" value="<?php echo $respuesta["nombre_categoria"];?>" required placeholder="Ingrese la descripcion de la categoria">
+        					</div>
+        				</form>
+        			</div>
+        		</div>
+        	</div>
+        }
 
         ?>
 
