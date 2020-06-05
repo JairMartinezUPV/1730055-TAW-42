@@ -564,6 +564,40 @@
         	</div>
         }
 
+        public function insertarCategoryController(){
+        	if (isset($_POST["ncategoriatxt"]) && isset($_POST["dcategoriatxt"])) {
+        		$datoscontroller = array("nombre_categoria"=>$_POST["ncategoriatxt"],"descripcion_categoria"=>$_POST["dcategoriatxt"]);
+        		$respuesta = Datos::insertarCategoryModel($datoscontroller,"categories");
+        		if ($respuesta == "succes") {
+        			echo '
+                        <div class="col-md-6 mt-3">
+                            <div class="alert alert-danger alert-dismissible">
+                                <button class="close" type="button" data-dismiss="alert" aria-hidden="true">x</button>
+                                <h5>
+                                    <i class="icon fas fa-ban"></i>
+                                    ¡Exito!
+                                </h5>
+                                Categoria agregada con exito.
+                            </div>
+                        </div>
+                    ';
+        		}else{
+        			echo '
+                        <div class="col-md-6 mt-3">
+                            <div class="alert alert-danger alert-dismissible">
+                                <button class="close" type="button" data-dismiss="alert" aria-hidden="true">x</button>
+                                <h5>
+                                    <i class="icon fas fa-ban"></i>
+                                    ¡Exito!
+                                </h5>
+                                Error al agregar la categoria.
+                            </div>
+                        </div>
+                    ';
+        		}
+        	}
+        }
+
         ?>
 
 
