@@ -1,4 +1,4 @@
 <?php
-session_destroy();
-ob_end_flush();
+	session_destroy();
+	ob_end_flush();
 ?>

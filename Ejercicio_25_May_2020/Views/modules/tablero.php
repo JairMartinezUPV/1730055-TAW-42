@@ -1,11 +1,9 @@
 <?php
+	if(!isset($_SESSION['validar'])){
+		header("location:index.php?action=ingresar");
+		exit();
+	}
 
-if (!isset($_SESSION['validar'])) {
-	header("location:index.php?action=ingresar");
-	exit();
-}
-
-$tablero = new MvcController();
-$tablero->contarFilas();
-
+	$tablero = new MvcController();
+	$tablero -> contarFilas();
 ?>
