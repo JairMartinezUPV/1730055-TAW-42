@@ -3,8 +3,8 @@
     ob_start();
 
     //Llamada al archivo que tiene los controladores y modelos que se necesitan para que el sistema funcione correctamente
-    require_once 'Model/enlaces.php';
-    require_once 'Model/crud.php';
+    require_once 'Models/enlaces.php';
+    require_once 'Models/crud.php';
     require_once 'Controllers/controller.php';
 
     //creamos un objeto
