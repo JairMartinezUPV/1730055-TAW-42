@@ -56,7 +56,7 @@
                         ?>
                         Aqui va el contenido de la pagina
                     <?php
-                        }
+                        
                         $mvc = new MvcController();
                         $mvc -> enlacesPaginasController();
                     ?>
@@ -66,7 +66,7 @@
     </div>
     <?php
         //Se verifica que la vista actual no sea el login, en caso de que sea el login, el footer del tamplete no se muestra
-        if($_GET['action'] != 'ingresar='){
+        if($_GET['action'] != 'ingresar'){
     ?>
     
     <?php
