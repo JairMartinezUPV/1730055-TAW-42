@@ -13,6 +13,6 @@
 
     //Mostrar la función o método "página" disponible en controllers/controller.php 
 
-    $mvc -> plantilla();
+    $mvc -> pagina();
 
 ?>
