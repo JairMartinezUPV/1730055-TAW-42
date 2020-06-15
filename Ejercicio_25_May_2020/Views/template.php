@@ -38,9 +38,9 @@
         }
     ?>
     <div class="wrapper">
-        //Content wrapper. Contain page connection_status
+        <!--Content wrapper. Contain page connection_status-->
         <div class="content-wrapper">
-            Main Content   
+            <!--Main Content   -->
             <section class="content">
                 <div class="container-fluid">
                     <div class="row mr-3 mt-2 mb-2">
@@ -54,7 +54,7 @@
                         <?php        
                             }
                         ?>
-                        Aqui va el contenido de la pagina
+                        <!--Aqui va el contenido de la pagina-->
                     <?php
                         
                         $mvc = new MvcController();
