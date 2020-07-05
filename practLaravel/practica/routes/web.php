@@ -12,36 +12,36 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::resource('empleados', 'empleadosController');
+Route::resource('departamentos', 'departamentosController');
+Route::get('/', 'empleadosController@index');
+Route::put('empleados/{id}', 'empleadosController@update');
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/productos', function (){
-    return ('Listado de productos (GET)');
+/*Route::get('/productos', function(){
+    return ('Listado de productos');
 });
 
 Route::post('/productos', function(){
-    return ('Almacenando productos (POST)');
+    return ('Almacenando');
 });
 
 Route::put('/productos/{id}', function($id){
     return ('Actualizando producto: '.$id);
 });
 
-//Parámetro
-Route::get('saludo/{nombre}/{apodo?}',function($nombre, $apodo=null){
-    //Poner la primer letra en mayúscula
-    $nombre = ucfirst($nombre);
-    //Validar si tiene un apodo.
-    if ($apodo){
-        return "Bienvenido {$nombre}, tu apodo es {$apodo}";
-    } else {
+
+//Parametros
+Route::get('saludo/{nombre}/{apodo?}', function($nombre, $apodo=null){
+    //Poner la primera letra en mayuscula
+    $nombre=ucfirst($nombre);
+    //validar si tiene apodop
+    if($apodo){
+        return "Bienvenido {$nombre}, tu apodo es: {$apodo}";
+    }else{
         return "Bienvenido {$nombre}";
     }
 });
 
-//Metodos para obtención, guardado y eliminación de datos:
-//get, post (guardar), put, delete.
-
-
+//Metodos para obtención y eliminacion de datos:
+//get (listado u obtener), post(guardar), put(actualizar), delete*/
