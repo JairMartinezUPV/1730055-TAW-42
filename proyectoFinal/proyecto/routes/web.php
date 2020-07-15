@@ -44,3 +44,7 @@ Route::post('/medicamentos/agregarMedicamento', 'MedicamentosController@addMedic
 Route::patch('/medicamentos/editarMedicamento', 'MedicamentosController@updateMedicamento');
 
 Route::delete('/medicamentos/eliminarMedicamento/{id}', 'MedicamentosController@deleteMedicamento');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
