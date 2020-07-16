@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Medicamento extends Model
+class Medico extends Model
 {
-    /**
+      /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -14,9 +14,13 @@ class Medicamento extends Model
     protected $fillable = [
         'id',
         'nombre',
-        'descripcion',
-        'presentacion',
-        'precio',
+        'apellido',
+        'usuario',
+        'clave',
+        'sexo',
+        'domicilio',
+        'telefono',
+        'tipo',
        
     ];
 

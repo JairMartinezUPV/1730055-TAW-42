@@ -43,7 +43,9 @@ class MedicamentosController extends Controller
     //se agrean los valores que se hayan ingresado
     public function guardar($request, $medicamento){
         $medicamento->nombre = $request->nombre;
-        $medicamento->cantidad = $request->cantidad;
+        $medicamento->descripcion = $request->descripcion;
+        $medicamento->presentacion = $request->presentacion;
+        $medicamento->precio = $request->precio;
       
         return $medicamento;
     }

@@ -1,4 +1,4 @@
 @extends('ventas')
 @section('contenido')
-    <servicios></servicios>
+    <medicos></medicos>
 @endsection

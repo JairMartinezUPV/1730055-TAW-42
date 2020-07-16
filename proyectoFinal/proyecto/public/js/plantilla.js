@@ -352,13 +352,13 @@ window.Vue = require('vue');
 
 //////////////////////// NOMBRE DE LOS COMPONENTES /////////////////////
 
-Vue.component('enfermedades', require('./components/enfermedades/lista_de_enfermedades.vue').default);
+Vue.component('enfermedades', require('./components/enfermedades/tablaEnfermedades.vue').default);
 
-Vue.component('medicamentos', require('./components/medicamentos/lista_de_medicamentos.vue').default);
+Vue.component('medicamentos', require('./components/medicamentos/tablaMedicamentos.vue').default);
 
-Vue.component('servicios', require('./components/servicios/lista_de_servicios.vue').default);
+Vue.component('pacientes', require('./components/pacientes/tablaPacientes.vue').default)
 
-Vue.component('pacientes', require('./components/pacientes/lista_de_pacientes.vue').default);
+Vue.component('medicos', require('./components/medicos/tablaMedicos.vue').default);
 
 
 /**

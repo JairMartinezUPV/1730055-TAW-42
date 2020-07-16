@@ -24,9 +24,11 @@
                     <table class="table table-bordered table-striped table-sm">
                         <thead>
                         <tr>
-                             <th>Acciones</th>
+                            <th>Acciones</th>
                             <th>Nombre</th>
-                            <th>Cantidad</th>
+                            <th>Descripcion</th>
+                            <th>Presentacion</th>
+                            <th>Precio</th>
                            
                             
                         </tr>
@@ -79,9 +81,9 @@
                             </td>
                             <!-------- VALORES DE LA TABLA-------->
                             <td v-text="medicamento.nombre"></td>
-                            <td v-text="medicamento.cantidad"></td>
-                           
-
+                            <td v-text="medicamento.descripcion"></td>
+                            <td v-text="medicamento.presentacion"></td>
+                            <td v-text="medicamento.precio"></td>
 
                         </tr>
                         </tbody>
@@ -115,11 +117,27 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-md-3 form-control-label">cantidad</label>
+                                <label class="col-md-3 form-control-label">Descripcion</label>
                                 <div class="col-md-9">
-                                    <input v-model="cantidad" type="text" id="cantidad" name="cantidad"
+                                    <input v-model="descripcion" type="text" id="descripcion" name="descripcion"
                                            class="form-control"
-                                           placeholder="Ingrese cantidad">
+                                           placeholder="Ingrese la descripcion">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 form-control-label">Presentacion</label>
+                                <div class="col-md-9">
+                                    <input v-model="presentacion" type="text" id="presentacion" name="presentacion"
+                                           class="form-control"
+                                           placeholder="Ingrese el tipo de presentacion">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 form-control-label">Precio</label>
+                                <div class="col-md-9">
+                                    <input v-model="precio" type="number" id="precio" name="precio"
+                                           class="form-control"
+                                           placeholder="Ingrese el precio">
                                 </div>
                             </div>
 
@@ -155,7 +173,9 @@
         data() {
             return {
                 nombre: "",
-                cantidad: "",
+                descripcion: "",
+                presentacion: "",
+                precio: "",
                
                  update: 0,
                 medicamentos: []
@@ -190,7 +210,9 @@
                 let url = '/medicamentos/agregarMedicamento';
                 axios.post(url, { 
                     'nombre': this.nombre,
-                    'cantidad': this.cantidad,
+                    'descripcion': this.descripcion,
+                    'presentacion': this.presentacion,
+                    'precio': this.precio,
                    
                 }).then(function (response) {
                     me.getMedicamentos();   
@@ -206,7 +228,9 @@
                 axios.patch(url, { 
                     'id': this.update,
                     'nombre': this.nombre,
-                    'cantidad': this.cantidad,
+                    'descripcion': this.descripcion,
+                    'presentacion': this.presentacion,
+                    'precio': this.precio,
                     
                  
                 }).then(function (response) {
@@ -223,7 +247,9 @@
                 let url = '/medicamentos/buscarMedicamento/' + this.update;
                 axios.get(url).then(function (response) {
                     me.nombre = response.data.nombre;
-                    me.cantidad = response.data.cantidad;
+                    me.descripcion = response.data.descripcion;
+                    me.presentacion = response.data.presentacion;
+                    me.precio = response.data.precio;
                    
              
                 })
@@ -233,7 +259,9 @@
             },
             clearFields(modal) {
                 this.nombre = "";
-                this.cantidad = "";
+                this.descripcion = "";
+                this.presentacion = "";
+                this.precio = "";
                
                 this.update = 0;
                 $(modal).modal('hide');

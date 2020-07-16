@@ -64,6 +64,22 @@ Route::patch('/pacientes/editarPaciente', 'PacientesController@updatePaciente');
 Route::delete('/pacientes/eliminarPaciente/{id}', 'PacientesController@deletePaciente');
 
 
+//rutas para medicos
+Route::get('/medicos', function () {
+    return view('componentes.componente_medicos');
+});
+
+Route::get('/medicos/obtenerMedicos', 'MedicosController@getAll');
+
+Route::get('/medicos/buscarMedico/{id}', 'MedicosController@getMedico');
+
+Route::post('/medicos/agregarMedico', 'MedicosController@addMedico');
+
+Route::patch('/medicos/editarMedico', 'MedicosController@updateMedico');
+
+Route::delete('/medicos/eliminarMedico/{id}', 'MedicosController@deleteMedico');
+
+
 
 
 
