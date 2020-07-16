@@ -13,25 +13,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//rutas para las enfermedades
+Route::get('/', function () {
+    return view('welcome');
+});
+
+//ruta para los padecimientos
 Route::get('/enfermedades', function () {
     return view('componentes.componente_enfermedades');
 });
 
-Route::get('/enfermedades/obtenerenfermedades', 'enfermedadesController@getAll');
+Route::get('/enfermedades/obtenerEnfermedades', 'EnfermedadesController@getAll');
 
-Route::get('/enfermedades/buscarEnfermedad/{id}', 'enfermedadesController@getEnfermedad');
+Route::get('/enfermedades/buscarEnfermedad/{id}', 'EnfermedadesController@getEnfermedad');
 
-Route::post('/enfermedades/agregarEnfermedad', 'enfermedadesController@addEnfermedad');
+Route::post('/enfermedades/agregarEnfermedad', 'EnfermedadesController@addEnfermedad');
 
-Route::patch('/enfermedades/editarEnfermedad', 'enfermedadesController@updateEnfermedad');
+Route::patch('/enfermedades/editarEnfermedad', 'EnfermedadesController@updateEnfermedad');
 
-Route::delete('/enfermedades/eliminarEnfermedad/{id}', 'enfermedadesController@deleteEnfermedad');
+Route::delete('/enfermedades/eliminarEnfermedad/{id}', 'EnfermedadesController@deleteEnfermedad');
 
-
-//ruta para los medicamentos
-
-Route::get('/', function () {
+//ruta de medicamentos
+Route::get('/medicamentos', function () {
     return view('componentes.componente_medicamentos');
 });
 
@@ -45,6 +47,24 @@ Route::patch('/medicamentos/editarMedicamento', 'MedicamentosController@updateMe
 
 Route::delete('/medicamentos/eliminarMedicamento/{id}', 'MedicamentosController@deleteMedicamento');
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//rutas para pacientes
+Route::get('/pacientes', function () {
+    return view('componentes.componente_pacientes');
+});
+
+Route::get('/pacientes/obtenerPacientes', 'PacientesController@getAll');
+
+Route::get('/pacientes/buscarPaciente/{id}', 'PacientesController@getPaciente');
+
+Route::post('/pacientes/agregarPaciente', 'PacientesController@addPaciente');
+
+Route::patch('/pacientes/editarPaciente', 'PacientesController@updatePaciente');
+
+Route::delete('/pacientes/eliminarPaciente/{id}', 'PacientesController@deletePaciente');
+
+
+
+
+
+

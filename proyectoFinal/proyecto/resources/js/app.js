@@ -19,7 +19,16 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+//////////////////////// NOMBRE DE LOS COMPONENTES /////////////////////
+
+Vue.component('enfermedades', require('./components/enfermedades/lista_de_enfermedades.vue').default);
+
+Vue.component('medicamentos', require('./components/medicamentos/lista_de_medicamentos.vue').default);
+
+Vue.component('servicios', require('./components/servicios/lista_de_servicios.vue').default);
+
+Vue.component('pacientes', require('./components/pacientes/lista_de_pacientes.vue').default);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

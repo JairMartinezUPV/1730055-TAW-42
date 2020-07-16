@@ -1,4 +1,4 @@
-@extends('layout')
-@section('content')
+@extends('ventas')
+@section('contenido')
     <enfermedades></enfermedades>
 @endsection

@@ -15,10 +15,8 @@ class CreateMedicamentosTable extends Migration
     {
         Schema::create('medicamentos', function (Blueprint $table) {
             $table->id();
-            $table->string("nombre", 50);
-            $table->string("descripcion", 50);
-            $table->string("presentacion", 50);
-            $table->string("precio", 50);
+            $table->string("nombre", 30);
+            $table->string("cantidad", 50);
             $table->timestamps();
         });
     }

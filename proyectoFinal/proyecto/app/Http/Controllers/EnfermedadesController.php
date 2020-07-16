@@ -5,12 +5,12 @@ namespace App\Http\Controllers;
 use App\Enfermedad;
 use Illuminate\Http\Request;
 
-class EnfermedadsController extends Controller
+class EnfermedadesController extends Controller
 {
-    //Se obtienen todos los datos de la tabla
     public function getAll(){
-        $enfermedads = Enfermedad::all();
-        return $enfermedads;
+        //Se obtienen los datos de la tabla
+        $enfermedades = Enfermedad::all();
+        return $enfermedades;
     }
 
     public function getEnfermedad($id){
@@ -20,28 +20,31 @@ class EnfermedadsController extends Controller
         return $enfermedad;
     }
 
-    //se agrega un regsitro de enfermedad
     public function addEnfermedad(Request $request){
-        $enfermedad = new Enfermedad();     
-        $enfermedad = $this->guardar($request, $enfermedad);    
+        //se agrega una nueva enfermedad
+        
+        $enfermedad = new Enfermedad();
+        $enfermedad = $this->guardar($request, $enfermedad);
         $enfermedad->save();
     }
 
-    //se modifica el registro de enfermedad
     public function updateEnfermedad(Request $request){
-        $enfermedad = Enfermedad::findOrFail($request->id);      
-        $enfermedad = $this->guardar($request, $enfermedad);        
-        $enfermedad->save();      
+        //se actualiza una enfermedad dependiendo de su id
+    
+        $enfermedad = Enfermedad::findOrFail($request->id);
+        $enfermedad = $this->guardar($request, $enfermedad);
+        $enfermedad->save();
         return $enfermedad;
     }
 
-    //se elimina el registro de enfermedad
     public function deleteEnfermedad($id){
-        $enfermedads = Enfermedad::destroy($id);
-        return $enfermedads;
+       //se elimina una enfermedad dependiendo de su id
+        $enfermedades = Enfermedad::destroy($id);
+        return $enfermedades;
     }
 
     public function guardar($request, $enfermedad){
+        //Se agregan los valores que se haya ingresado
         $enfermedad->nombre = $request->nombre;
         $enfermedad->descripcion = $request->descripcion;
         return $enfermedad;

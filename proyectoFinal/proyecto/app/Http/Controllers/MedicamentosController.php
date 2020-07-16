@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class MedicamentosController extends Controller
 {
-    //Se obtienen todos los datos de la tabla
+    //Se obtienen los datos de la tabla
     public function getAll(){
         $medicamentos = Medicamento::all();
         return $medicamentos;
@@ -16,36 +16,35 @@ class MedicamentosController extends Controller
     public function getMedicamento($id){
       
         $medicamento = Medicamento::findOrFail($id);
-
         return $medicamento;
     }
 
-    //se agrega eun registro de medicamento
+    //se agrega un medicamento
     public function addMedicamento(Request $request){
-        $medicamento = new Medicamento();     
-        $medicamento = $this->guardar($request, $medicamento);       
+        $medicamento = new Medicamento();
+        $medicamento = $this->guardar($request, $medicamento);
         $medicamento->save();
     }
 
-    // se actualiza un registro de medicamento
+    //me modifican los datos dependiendo de su id
     public function updateMedicamento(Request $request){
         $medicamento = Medicamento::findOrFail($request->id);
-        $medicamento = $this->guardar($request, $medicamento);       
-        $medicamento->save();     
+        $medicamento = $this->guardar($request, $medicamento);
+        $medicamento->save();
         return $medicamento;
     }
 
-    //se borra un registro de medicamento
+    //se eliminan los productos dependiendo de su id
     public function deleteMedicamento($id){
         $medicamentos = Medicamento::destroy($id);
         return $medicamentos;
     }
 
+    //se agrean los valores que se hayan ingresado
     public function guardar($request, $medicamento){
         $medicamento->nombre = $request->nombre;
-        $medicamento->descripcion = $request->descripcion;
-        $medicamento->presentacion = $request->presentacion;
-        $medicamento->precio = $request->precio;
+        $medicamento->cantidad = $request->cantidad;
+      
         return $medicamento;
     }
 

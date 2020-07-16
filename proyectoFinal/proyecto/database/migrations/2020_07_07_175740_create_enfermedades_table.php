@@ -15,8 +15,8 @@ class CreateEnfermedadesTable extends Migration
     {
         Schema::create('enfermedades', function (Blueprint $table) {
             $table->id();
-            $table->string("nombre", 50);
-            $table->string("descripcion", 100);
+            $table->string("nombre", 30);
+            $table->string("descripcion", 256);
             $table->timestamps();
         });
     }
