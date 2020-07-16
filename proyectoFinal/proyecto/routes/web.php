@@ -49,7 +49,7 @@ Route::delete('/medicamentos/eliminarMedicamento/{id}', 'MedicamentosController@
 
 
 //rutas para pacientes
-Route::get('/pacientes', function () {
+Route::get('/', function () {
     return view('componentes.componente_pacientes');
 });
 

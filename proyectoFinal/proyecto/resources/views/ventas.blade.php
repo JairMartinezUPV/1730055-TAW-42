@@ -83,7 +83,7 @@
                     
                 </li>
                 <li class="nav-item nav-dropdown">
-                    <a class="nav-link nav-dropdown-toggle" href="/pacientes"></i>Pacientes</a>
+                    <a class="nav-link nav-dropdown-toggle" href="/"></i>Pacientes</a>
                     
                 </li>
                 <li class="nav-item nav-dropdown">
